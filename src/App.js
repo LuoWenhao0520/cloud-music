@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { GlobalStyle } from './style'
+import { IconStyle } from './assets/iconfont/iconfont'
+
+import { Provider } from 'react-redux'
+import store from './store'
+
+import { renderRoutes } from 'react-router-config'
+import routes from './routes'
+
+import { Data } from './application/Singers/data'
+import { HashRouter as Router } from 'react-router-dom'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={ store }>
+      <Router>
+        <GlobalStyle />
+        <IconStyle />
+        <Data>
+        { renderRoutes(routes) }
+
+        </Data>
+      </Router>
+    </Provider>
+    
   );
 }
 
